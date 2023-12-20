@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 
+import '../Blog/DailyHealthBlog.dart';
+import '../ChatNotification/Notificationn.dart';
 import '../ChatNotification/Widgets.dart';
+import '../ChatNotification/chat.dart';
+import 'AdditionalHealth.dart';
 import 'Profile.dart';
 
 class Dashboard extends StatefulWidget {
@@ -546,6 +550,22 @@ class _DashboardState extends State<Dashboard> {
               _currentIndex = index;
 
               // Use Navigator to navigate to different screens
+              if (_currentIndex == 0) {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => DailyHealthBlog(),
+                  ),
+                );
+              }
+              if (_currentIndex == 1) {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ChatPage(),
+                  ),
+                );
+              }
               if (_currentIndex == 2) {
                 Navigator.push(
                   context,
@@ -554,6 +574,15 @@ class _DashboardState extends State<Dashboard> {
                   ),
                 );
               }
+              if (_currentIndex == 3) {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => Notificationn(),
+                  ),
+                );
+              }
+
             });
           }),
     );

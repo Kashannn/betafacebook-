@@ -27,9 +27,9 @@ class _SleepCycleState extends State<SleepCycle> {
           backgroundColor: Colors.white,
         ),
       ),
-      body: Container(
-        margin: EdgeInsets.all(10),
-        child: Center(
+      body: SingleChildScrollView(
+        child: Container(
+          margin: EdgeInsets.all(10),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -104,7 +104,6 @@ class _SleepCycleState extends State<SleepCycle> {
                               AssetImage("Images/Night Owl.png"),
                               size: 24,
                             ),
-                            //Icon Image
                             SizedBox(
                               width: 10,
                             ),
@@ -140,7 +139,6 @@ class _SleepCycleState extends State<SleepCycle> {
                               AssetImage("Images/Flexible.png"),
                               size: 24,
                             ),
-                            //Icon Image
                             SizedBox(
                               width: 10,
                             ),
@@ -162,7 +160,7 @@ class _SleepCycleState extends State<SleepCycle> {
                   ),
                 ],
               ),
-              SizedBox(height: 400),
+              SizedBox(height: 300),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -177,7 +175,7 @@ class _SleepCycleState extends State<SleepCycle> {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => Height()), // Adjust this line based on your Weight class
+                        MaterialPageRoute(builder: (context) => Height()),
                       );
                     },
                     child: Text(

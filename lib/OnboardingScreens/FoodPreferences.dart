@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-
 import 'FoodPreference2.dart';
 import 'SleepCycle.dart';
-
 
 class FoodPreferences extends StatefulWidget {
   const FoodPreferences({Key? key}) : super(key: key);
@@ -29,141 +27,148 @@ class _FoodPreferencesState extends State<FoodPreferences> {
           backgroundColor: Colors.white,
         ),
       ),
-      body: Column(
-        children: [
-          Container(
-            margin: EdgeInsets.all(40),
-            child: Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Column(
-                    children: [
-                      Text(
-                        "Select Your Preferences",
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 24),
-                      ),
-                      Text(
-                        "Torem ipsum dolor sit amet, consectetur alertyim adipiscing elit.",
-                        style: TextStyle(
-                          fontWeight: FontWeight.w400,
-                          color: Color(0xff6a678b),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Container(
+              margin: EdgeInsets.all(40),
+              child: Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Column(
+                      children: [
+                        Text(
+                          "Select Your Preferences",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 24),
                         ),
-                        textAlign: TextAlign.center,
-                      ),
-                    ],
-                  ),
+                        Text(
+                          "Torem ipsum dolor sit amet, consectetur alertyim adipiscing elit.",
+                          style: TextStyle(
+                            fontWeight: FontWeight.w400,
+                            color: Color(0xff6a678b),
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            Container(
+              // Additional container below existing content
+              margin: EdgeInsets.symmetric(horizontal: 40),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  _buildCircularContainer(
+                      Color(0xFFEFEEFB), AssetImage('Images/fruit.png')),
+                  _buildCircularContainer(
+                      Color(0xFFEFEEFB), AssetImage('Images/vegetable.png')),
+                  _buildCircularContainer(
+                      Color(0xFFEFEEFB), AssetImage('Images/dairy.png')),
                 ],
               ),
             ),
-          ),
-          Container(
-            // Additional container below existing content
-            margin: EdgeInsets.symmetric(horizontal: 40),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                _buildCircularContainer(Color(0xFFEFEEFB),AssetImage('Images/fruit.png')),
-                _buildCircularContainer(Color(0xFFEFEEFB),AssetImage('Images/vegetable.png')),
-                _buildCircularContainer(Color(0xFFEFEEFB),AssetImage('Images/dairy.png')),
-
-              ],
+            SizedBox(
+              height: 20,
             ),
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          Container(
-            // Additional container below existing content
-            margin: EdgeInsets.symmetric(horizontal: 40),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                _buildCircularContainer(Color(0xFFEFEEFB),AssetImage('Images/dairy.png')),
-                _buildCircularContainer(Color(0xFFEFEEFB),AssetImage('Images/fruit.png')),
-                _buildCircularContainer(Color(0xFFEFEEFB),AssetImage('Images/vegetable.png')),
-
-
-              ],
-            ),
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          Container(
-            // Additional container below existing content
-            margin: EdgeInsets.symmetric(horizontal: 40),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                _buildCircularContainer(Color(0xFFEFEEFB),AssetImage('Images/vegetable.png')),
-                _buildCircularContainer(Color(0xFFEFEEFB),AssetImage('Images/dairy.png')),
-                _buildCircularContainer(Color(0xFFEFEEFB),AssetImage('Images/fruit.png')),
-
-
-              ],
-            ),
-          ),
-          SizedBox(height: 200),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  primary: Colors.white,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10.0),
-                  ),
-                  minimumSize: Size(buttonWidth, 40),
-                ),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => SleepCycle()),
-                  );
-                },
-                child: Text(
-                  "Back",
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w500,
-                    color: kgColor,
-                  ),
-                ),
+            Container(
+              // Additional container below existing content
+              margin: EdgeInsets.symmetric(horizontal: 40),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  _buildCircularContainer(
+                      Color(0xFFEFEEFB), AssetImage('Images/dairy.png')),
+                  _buildCircularContainer(
+                      Color(0xFFEFEEFB), AssetImage('Images/fruit.png')),
+                  _buildCircularContainer(
+                      Color(0xFFEFEEFB), AssetImage('Images/vegetable.png')),
+                ],
               ),
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  primary: kgColor,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10.0),
-                  ),
-                  minimumSize: Size(buttonWidth, 40),
-                ),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => FoodPreferencee()),
-                  );
-                },
-                child: Text(
-                  "Continue",
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w500,
-                    color: Colors.white,
-                  ),
-                ),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Container(
+              // Additional container below existing content
+              margin: EdgeInsets.symmetric(horizontal: 40),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  _buildCircularContainer(
+                      Color(0xFFEFEEFB), AssetImage('Images/vegetable.png')),
+                  _buildCircularContainer(
+                      Color(0xFFEFEEFB), AssetImage('Images/dairy.png')),
+                  _buildCircularContainer(
+                      Color(0xFFEFEEFB), AssetImage('Images/fruit.png')),
+                ],
               ),
-            ],
-          ),
-        ],
+            ),
+            SizedBox(height: 200),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                    minimumSize: Size(buttonWidth, 40),
+                  ),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => SleepCycle()),
+                    );
+                  },
+                  child: Text(
+                    "Back",
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500,
+                      color: kgColor,
+                    ),
+                  ),
+                ),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    primary: kgColor,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                    minimumSize: Size(buttonWidth, 40),
+                  ),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => FoodPreferencee()),
+                    );
+                  },
+                  child: Text(
+                    "Continue",
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
 
-  Widget _buildCircularContainer(Color color, ImageProvider<Object> imageProvider) {
+  Widget _buildCircularContainer(
+      Color color, ImageProvider<Object> imageProvider) {
     return ClipOval(
       child: Container(
         width: 100,
