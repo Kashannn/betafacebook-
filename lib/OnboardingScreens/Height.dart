@@ -19,10 +19,10 @@ class _HeightState extends State<Height> {
     Color inchesColor = Color(0xFF6B678B);
     Size size = MediaQuery.of(context).size;
     double buttonWidth = 130.0;
-
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(kToolbarHeight),
+        preferredSize: Size.fromHeight(
+            kToolbarHeight + 0.4), // Adjust the height as needed
         child: AppBar(
           title: Text(
             "Height",
@@ -30,6 +30,14 @@ class _HeightState extends State<Height> {
           ),
           centerTitle: true,
           backgroundColor: Colors.white,
+          bottom: PreferredSize(
+            preferredSize: Size.fromHeight(1.0), // Adjust the height as needed
+            child: LinearProgressIndicator(
+              value: 0.50,
+              valueColor: AlwaysStoppedAnimation<Color>(
+                  Color(0xFF6154D5)), // Set the color of the progress bar
+            ),
+          ),
         ),
       ),
       body: Column(

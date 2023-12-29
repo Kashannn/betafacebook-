@@ -21,7 +21,8 @@ class _WeightState extends State<Weight> {
 
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(kToolbarHeight),
+        preferredSize: Size.fromHeight(
+            kToolbarHeight + 0.4), // Adjust the height as needed
         child: AppBar(
           title: Text(
             "Weight",
@@ -29,6 +30,14 @@ class _WeightState extends State<Weight> {
           ),
           centerTitle: true,
           backgroundColor: Colors.white,
+          bottom: PreferredSize(
+            preferredSize: Size.fromHeight(1.0), // Adjust the height as needed
+            child: LinearProgressIndicator(
+              value: 0.334,
+              valueColor: AlwaysStoppedAnimation<Color>(
+                  Color(0xFF6154D5)), // Set the color of the progress bar
+            ),
+          ),
         ),
       ),
       body: Padding(
@@ -80,12 +89,12 @@ class _WeightState extends State<Weight> {
                     ),
                   ],
                 ),
-
-                SizedBox(height: 15,),
+                SizedBox(
+                  height: 15,
+                ),
                 RulerWidget(
                   size: Size(size.width, size.height / 6),
                   viewStyle: ViewStyle.valueUpScaleDownStyle,
-
                   showHighScaleLine: true,
                   showHighScaleNum: true,
                   showLowScaleLine: true,
@@ -120,8 +129,6 @@ class _WeightState extends State<Weight> {
                 ),
               ],
             ),
-
-
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -158,8 +165,7 @@ class _WeightState extends State<Weight> {
                   ),
                   onPressed: () {
                     Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => Height()));
-
+                        MaterialPageRoute(builder: (context) => Height()));
                   },
                   child: Text(
                     "Continue",

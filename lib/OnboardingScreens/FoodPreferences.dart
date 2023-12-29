@@ -17,7 +17,8 @@ class _FoodPreferencesState extends State<FoodPreferences> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(kToolbarHeight),
+        preferredSize: Size.fromHeight(
+            kToolbarHeight + 0.4), // Adjust the height as needed
         child: AppBar(
           title: Text(
             "Food Preferences",
@@ -25,6 +26,14 @@ class _FoodPreferencesState extends State<FoodPreferences> {
           ),
           centerTitle: true,
           backgroundColor: Colors.white,
+          bottom: PreferredSize(
+            preferredSize: Size.fromHeight(1.0), // Adjust the height as needed
+            child: LinearProgressIndicator(
+              value: 0.837,
+              valueColor: AlwaysStoppedAnimation<Color>(
+                  Color(0xFF6154D5)), // Set the color of the progress bar
+            ),
+          ),
         ),
       ),
       body: SingleChildScrollView(
@@ -177,7 +186,7 @@ class _FoodPreferencesState extends State<FoodPreferences> {
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: CircleAvatar(
-            backgroundColor: Colors.transparent,
+             backgroundColor: Colors.transparent,
             foregroundColor: Colors.transparent,
             child: Center(
               //heightFactor: 20,

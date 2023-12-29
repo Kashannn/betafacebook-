@@ -15,181 +15,214 @@ class _LoginState extends State<Login> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Container(
-              height: 250,
-              width: 500,
-              color: Color(0xFF6154D5),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.end,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Text(
-                    'Welcome Back!',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 30,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  SizedBox(height: 10),
-                  Text(
-                    'Please login to access your account',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 18,
-                    ),
-                  ),
-                ],
-              ),
-            ),
+            _buildHeader(),
             SizedBox(height: 15),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: TextField(
-                decoration: InputDecoration(
-                  hintText: 'Email',
-                  labelText: 'Email',
-                  hintStyle: TextStyle(color: Colors.black),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.blue),
-                  ),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10.0),
-                  ),
-                ),
-              ),
-            ),
+            _buildTextField('Email', 'Email'),
             SizedBox(height: 15),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: TextField(
-                obscureText: true,
-                decoration: InputDecoration(
-                  hintText: 'Password',
-                  labelText: 'Password',
-                  hintStyle: TextStyle(color: Colors.black),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.blue),
-                  ),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10.0),
-                  ),
-                ),
-              ),
-            ),
+            _buildTextField('Password', 'Password', obscureText: true),
             SizedBox(height: 20),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Row(
-                children: [
-                  Checkbox(
-                    value: false, // Set the initial value accordingly
-                    onChanged: (value) {
-                      // Handle checkbox state
-                    },
-                  ),
-                  Text('Remember Me'),
-                  Spacer(),
-                  TextButton(
-                    onPressed: () {
-                      // Add functionality for "Forgot Password"
-                    },
-                    child: Text(
-                      'Forgot Password',
-                      style: TextStyle(color: Colors.blue),
-                    ),
-                  ),
-                ],
-              ),
-            ),
+            _buildRememberMeAndForgotPassword(),
             SizedBox(height: 20),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Container(
-                width: double.infinity,
-                height: 50,
-                child: ElevatedButton(
-                  onPressed: () {
-                    // Change to the appropriate function or remove if not needed
-                    // signup();
-                  },
-                  child: Text(
-                    'Login',
-                    style: TextStyle(fontSize: 18, color: Colors.white),
-                  ),
-                  style: ElevatedButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    backgroundColor: Color(0xFF6154D5),
-                  ),
-                ),
-              ),
-            ),
+            _buildLoginButton(),
             SizedBox(height: 10),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Row(
-                children: [
-                  Expanded(
-                    child: Container(
-                      height: 1,
-                      color: Colors.black,
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 10),
-                    child: Text('OR LOGIN WITH'),
-                  ),
-                  Expanded(
-                    child: Container(
-                      height: 1,
-                      color: Colors.black,
-                    ),
-                  ),
-                ],
-              ),
-            ),
+            _buildDividerWithText('OR LOGIN WITH'),
             SizedBox(height: 20),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  _buildImageContainer('Images/facebook.png'),
-                  _buildImageContainer('Images/google.png'),
-                  _buildImageContainer('Images/IOS.png'),
-                ],
-              ),
-            ),
+            _buildSocialLoginButtons(),
             SizedBox(height: 40),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text('New here?'),
-                  SizedBox(width: 5),
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => signup()),
-                      );
-                    },
-                    child: Text(
-                      'Signup',
-                      style: TextStyle(
-                        color: Colors.blue,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
+            _buildSignupLink(),
           ],
         ),
+      ),
+    );
+  }
+
+  Widget _buildHeader() {
+    return Container(
+      height: 300,
+      width: 500,
+      color: Color(0xFF6154D5),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          _buildCategoryImagesRow(),
+          SizedBox(height: 10),
+          _buildWelcomeText(),
+          SizedBox(height: 10),
+          _buildDescriptionText(),
+          SizedBox(height: 10),
+          _buildCategoryImagesRow(),
+          SizedBox(height: 10),
+          _buildAdditionalImagesRow(),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildCategoryImagesRow() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        _buildImage('Images/dairy.png'),
+        SizedBox(width: 10),
+        _buildImage('Images/vegetable.png'),
+        SizedBox(width: 10),
+        _buildImage('Images/fruit.png'),
+      ],
+    );
+  }
+
+  Widget _buildImage(String imagePath) {
+    return Image(
+      image: AssetImage(imagePath),
+      height: 50,
+      width: 50,
+    );
+  }
+
+  Widget _buildWelcomeText() {
+    return Text(
+      'Welcome Back!',
+      style: TextStyle(
+        color: Colors.white,
+        fontSize: 30,
+        fontWeight: FontWeight.bold,
+      ),
+    );
+  }
+
+  Widget _buildDescriptionText() {
+    return Text(
+      'Please login to access your account',
+      style: TextStyle(
+        color: Colors.white,
+        fontSize: 18,
+      ),
+    );
+  }
+
+  Widget _buildAdditionalImagesRow() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        _buildImage('Images/weightloss.png'),
+        SizedBox(width: 10),
+        _buildImage('Images/weightscales.png'),
+        // You can add more images here as needed
+      ],
+    );
+  }
+
+  Widget _buildTextField(String hintText, String labelText,
+      {bool obscureText = false}) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+      child: TextField(
+        obscureText: obscureText,
+        decoration: InputDecoration(
+          hintText: hintText,
+          labelText: labelText,
+          hintStyle: TextStyle(color: Colors.black),
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: Colors.blue),
+          ),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10.0),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildRememberMeAndForgotPassword() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+      child: Row(
+        children: [
+          Checkbox(
+            value: false, // Set the initial value accordingly
+            onChanged: (value) {
+              // Handle checkbox state
+            },
+          ),
+          Text('Remember Me'),
+          Spacer(),
+          TextButton(
+            onPressed: () {
+              // Add functionality for "Forgot Password"
+            },
+            child: Text(
+              'Forgot Password',
+              style: TextStyle(color: Colors.blue),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildLoginButton() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+      child: Container(
+        width: double.infinity,
+        height: 50,
+        child: ElevatedButton(
+          onPressed: () {
+            // Change to the appropriate function or remove if not needed
+            // signup();
+          },
+          child: Text(
+            'Login',
+            style: TextStyle(fontSize: 18, color: Colors.white),
+          ),
+          style: ElevatedButton.styleFrom(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(15),
+            ),
+            backgroundColor: Color(0xFF6154D5),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildDividerWithText(String text) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+      child: Row(
+        children: [
+          Expanded(
+            child: Container(
+              height: 1,
+              color: Colors.black,
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10),
+            child: Text(text),
+          ),
+          Expanded(
+            child: Container(
+              height: 1,
+              color: Colors.black,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildSocialLoginButtons() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          _buildImageContainer('Images/facebook.png'),
+          _buildImageContainer('Images/google.png'),
+          _buildImageContainer('Images/IOS.png'),
+        ],
       ),
     );
   }
@@ -215,6 +248,34 @@ class _LoginState extends State<Login> {
           height: 40,
           width: 40,
         ),
+      ),
+    );
+  }
+
+  Widget _buildSignupLink() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text('New here?'),
+          SizedBox(width: 5),
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Signup()),
+              );
+            },
+            child: Text(
+              'Signup',
+              style: TextStyle(
+                color: Colors.blue,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

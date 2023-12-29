@@ -97,17 +97,46 @@ class _DailyHealthBlogState extends State<DailyHealthBlog> {
                       children: [
                         Expanded(
                           child: Center(
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(8),
-                              child: Image.asset(
-                                'Images/gym.png',
-                                width: 327,
-                                height: 312,
-                                fit: BoxFit.cover,
-                              ),
+                            child: Stack(
+                              children: [
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(8),
+                                  child: Image.asset(
+                                    'Images/gym.png',
+                                    width: 327,
+                                    height: 312,
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                                Positioned(
+                                  top: 8, // Adjust the top position as needed
+                                  right: 8, // Adjust the right position as needed
+                                  child: IconButton(
+                                    icon: Icon(Icons.share_outlined),
+                                    color: Colors.white,
+                                    iconSize: 34,
+                                    onPressed: () {
+                                      // Handle share button press
+                                    },
+                                  ),
+                                ),
+                                Positioned(
+                                  top: 8, // Adjust the top position as needed
+                                  right: 45, // Adjust the right position as needed
+                                  child: IconButton(
+                                    icon: Icon(Icons.bookmark_outline_outlined),
+                                    color: Colors.white,
+                                    iconSize: 34,
+                                    onPressed: () {
+                                      // Handle share button press
+                                    },
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                         ),
+
                       ],
                     ),
                   ),
